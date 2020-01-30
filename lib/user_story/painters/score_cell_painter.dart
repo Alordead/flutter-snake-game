@@ -13,7 +13,7 @@ class ScoreCellPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final offset = Offset(cellSize.width * scoreCell.position.x, cellSize.height * scoreCell.position.y);
     Rect rect = offset & cellSize;
-    canvas.drawRect(rect, Paint()..color = AppTheme.accentColor);
+    canvas.drawRect(rect, Paint()..color = AppTheme.current.accentColor);
   }
 
   @override

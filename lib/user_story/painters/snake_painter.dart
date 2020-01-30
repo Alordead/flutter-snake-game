@@ -14,7 +14,7 @@ class SnakePainter extends CustomPainter {
     snake.body.forEach((cell) {
       final offset = Offset(cellSize.width * cell.position.x, cellSize.height * cell.position.y);
       Rect rect = offset & cellSize;
-      canvas.drawRect(rect, Paint()..color = AppTheme.accentColor);
+      canvas.drawRect(rect, Paint()..color = AppTheme.current.accentColor);
     });
   }
 

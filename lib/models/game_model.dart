@@ -1,22 +1,27 @@
 import 'dart:async';
 
-import 'package:snake_game/common/constants.dart';
+import 'package:snake_game/helpers/game_mode_helper.dart';
 import 'package:snake_game/models/snake.dart';
-
 import 'cells/score_cell.dart';
+import 'game_mode.dart';
+import 'game_mode_state.dart';
 import 'game_state.dart';
 
 class GameModel {
   Snake snake = Snake(length: 3);
   ScoreCell scoreCell = ScoreCell();
   Timer timer;
-  final shouldRepaintDuration = speedDuration;
 
-  StreamController<GameState> _updateStateController = StreamController.broadcast();
-  StreamController<bool> _needUpdateBoardController = StreamController.broadcast();
+  StreamController<GameState> _updateStateController = StreamController
+      .broadcast();
+  StreamController<bool> _needUpdateBoardController = StreamController
+      .broadcast();
 
-  Stream<GameState> get updateStream => _updateStateController.stream.asBroadcastStream();
-  Stream<bool> get needUpdateBoardStream => _needUpdateBoardController.stream.asBroadcastStream();
+  Stream<GameState> get updateStream =>
+      _updateStateController.stream.asBroadcastStream();
+
+  Stream<bool> get needUpdateBoardStream =>
+      _needUpdateBoardController.stream.asBroadcastStream();
 
   int _score;
 
@@ -29,7 +34,7 @@ class GameModel {
     snake.start();
 
     _score = 0;
-    timer = Timer.periodic(shouldRepaintDuration, (timer) {
+    timer = Timer.periodic(_getShouldRepaintDuration(), (timer) {
       _ifScoreCellAteLogic();
       _ifSnakeAteHimselfLogic();
       _needUpdateBoardController.add(true);
@@ -46,7 +51,7 @@ class GameModel {
 
   _ifSnakeAteHimselfLogic() {
     if (snake.eatsBody())
-     gameOver();
+      gameOver();
   }
 
   restart() {
@@ -65,4 +70,9 @@ class GameModel {
   }
 
   int get score => _score;
+
+  _getShouldRepaintDuration() {
+    GameModeState state = GameMode.instance.state;
+    return GameModeHelper.durationByState(state);
+  }
 }

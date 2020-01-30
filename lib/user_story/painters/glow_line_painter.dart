@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
+import 'package:snake_game/common/constants.dart';
 import 'package:snake_game/user_story/common/app_theme.dart';
-import 'package:snake_game/user_story/widgets/effects/glow_line.dart';
 
 class GlowLinePainter extends CustomPainter {
   final double offset;
@@ -32,8 +32,8 @@ class GlowLinePainter extends CustomPainter {
   }
 
   final List<Color> _defaultColors = [
-    AppTheme.accentColor.withOpacity(0),
-    AppTheme.accentColor.withOpacity(0.1),
+    AppTheme.current.accentColor.withOpacity(0),
+    AppTheme.current.accentColor.withOpacity(0.1),
   ];
 
   final List<double> _defaultStops = [0.0, 1.0];

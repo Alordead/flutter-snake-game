@@ -9,7 +9,7 @@ const _step = 30;
 class StaticNoisePainter extends CustomPainter {
   final Color color;
 
-  StaticNoisePainter({this.color = AppTheme.accentColor});
+  StaticNoisePainter({this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -27,7 +27,7 @@ class StaticNoisePainter extends CustomPainter {
       }
     }
 
-    paint.color = color.withOpacity(0.2);
+    paint.color = (color ?? AppTheme.current.accentColor).withOpacity(0.2);
     paint.strokeWidth = 1.5;
 
     canvas.drawPoints(PointMode.points, points, paint);

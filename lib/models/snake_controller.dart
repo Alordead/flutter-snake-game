@@ -26,13 +26,13 @@ class SnakeController {
     final key = value.physicalKey;
     Direction direction;
 
-    if (key == PhysicalKeyboardKey.keyW)
+    if (key == PhysicalKeyboardKey.keyW || key == PhysicalKeyboardKey.arrowUp)
       direction = Direction.top;
-    else if (key == PhysicalKeyboardKey.keyD)
+    else if (key == PhysicalKeyboardKey.keyD || key == PhysicalKeyboardKey.arrowRight)
       direction = Direction.right;
-    else if (key == PhysicalKeyboardKey.keyS)
+    else if (key == PhysicalKeyboardKey.keyS || key == PhysicalKeyboardKey.arrowDown)
       direction = Direction.bottom;
-    else if (key == PhysicalKeyboardKey.keyA)
+    else if (key == PhysicalKeyboardKey.keyA || key == PhysicalKeyboardKey.arrowLeft)
       direction = Direction.left;
 
     return direction;
