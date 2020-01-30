@@ -60,5 +60,5 @@ flutter:
   fonts:
     - family: Apple ][
       fonts:
-        - asset: assets/fonts/Apple ][.ttf
+        - asset: fonts/Apple ][.ttf
           weight: 400
