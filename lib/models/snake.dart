@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
-import 'package:snake_game/common/constants.dart';
+import 'package:snake_game/helpers/game_mode_helper.dart';
 import 'package:snake_game/models/snake_controller.dart';
 import 'package:snake_game/utils/direction.dart';
 import 'package:snake_game/utils/direction_utils.dart';
 
 import 'cells/body_cell.dart';
+import 'game_mode.dart';
 
 class Snake {
   SnakeController _controller;
@@ -20,7 +20,7 @@ class Snake {
   int get lastCellIndex => body.map((cell) => cell.id).reduce(min);
 
   Timer timer;
-  final moveDuration = speedDuration;
+  Duration get moveDuration => GameModeHelper.durationByState(GameMode.instance.state);
 
   Direction currentDirection = Direction.right;
   Direction nextDirection;

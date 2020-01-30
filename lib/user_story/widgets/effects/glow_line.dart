@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:snake_game/common/constants.dart';
 import 'package:snake_game/user_story/painters/glow_line_painter.dart';
 
-const glowHeight = 150.0;
+
 
 class GlowLine extends StatefulWidget {
   final double height;

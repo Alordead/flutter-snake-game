@@ -1,5 +1,3 @@
-
-
 import 'dart:math';
 
 import 'package:snake_game/common/constants.dart';
